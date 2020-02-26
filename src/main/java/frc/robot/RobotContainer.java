@@ -50,7 +50,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     button_b = new JoystickButton(m_driverInput, XboxController.Button.kB.value);
 
-    button_b.whileActiveContinuous(new SwallowCommand(m_swallower, -0.5));
+    button_b.whileActiveContinuous(new SwallowCommand(m_swallower, 0.5));
+    button_b.whenReleased(new SwallowCommand(m_swallower, 0));
     System.out.println("Button should be configured now");
     //button_a.whenInactive(new SwallowCommand(m_swallower, 0));
 

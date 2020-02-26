@@ -127,11 +127,11 @@ public class Robot extends TimedRobot {
     // operatorControl();
     CommandScheduler.getInstance().run();
 
-    if (m_robotContainer.m_driverInput.getAButtonPressed()) {
-      m_robotContainer.m_swallower.setSpeed(-0.5);
-    } else {
-      m_robotContainer.m_swallower.setSpeed(0);
-    }
+    // if (m_robotContainer.m_driverInput.getAButtonPressed()) {
+    //   m_robotContainer.m_swallower.setSpeed(-0.5);
+    // } else {
+    //   m_robotContainer.m_swallower.setSpeed(0);
+    // }
 
 
   }
