@@ -25,10 +25,11 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DrivingSubsystem m_robotDrive = new DrivingSubsystem();
-  private final XboxController m_driverInput = new XboxController(Constants.DRIVER_XBOX_USB_PORT);
+  public final XboxController m_driverInput = new XboxController(Constants.DRIVER_XBOX_USB_PORT);
   private final DriveCommand m_driveCommand = new DriveCommand(m_robotDrive, this);
-  private final SwallowerSubsystem m_swallower = new SwallowerSubsystem();
-  
+  public final SwallowerSubsystem m_swallower = new SwallowerSubsystem();
+
+  private JoystickButton button_b;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -47,9 +48,10 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    final JoystickButton button_a = new JoystickButton(m_driverInput, XboxController.Button.kA.value);
+    button_b = new JoystickButton(m_driverInput, XboxController.Button.kB.value);
 
-    button_a.whileActiveContinuous(new SwallowCommand(m_swallower, 0.5));
+    button_b.whileActiveContinuous(new SwallowCommand(m_swallower, -0.5));
+    System.out.println("Button should be configured now");
     //button_a.whenInactive(new SwallowCommand(m_swallower, 0));
 
   }

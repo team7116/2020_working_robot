@@ -23,22 +23,26 @@ public class SwallowCommand extends CommandBase {
     this.speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(swallower);
+    System.out.println("Constructed swallow command");
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    System.out.println("Starting swallow command");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_swallower.setSpeed(speed);
+    System.out.println("Executing swallow command");
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("Ending swallow command");
   }
 
   // Returns true when the command should end.

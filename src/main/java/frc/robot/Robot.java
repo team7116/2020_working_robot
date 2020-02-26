@@ -43,6 +43,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
+  
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -123,7 +125,13 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     // operatorControl();
-    CommandScheduler.getInstance().run();;
+    CommandScheduler.getInstance().run();
+
+    if (m_robotContainer.m_driverInput.getAButtonPressed()) {
+      m_robotContainer.m_swallower.setSpeed(-0.5);
+    } else {
+      m_robotContainer.m_swallower.setSpeed(0);
+    }
 
 
   }
@@ -139,6 +147,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    operatorControl();
   }
 
 

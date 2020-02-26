@@ -26,7 +26,7 @@ public class SwallowerSubsystem extends SubsystemBase {
   }
   
   public void setSpeed(double speed){
-    motor.set(ControlMode.Velocity, speed);
+    motor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
