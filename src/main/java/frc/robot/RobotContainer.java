@@ -10,8 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.ShootCommand;
 import frc.robot.commands.SwallowCommand;
 import frc.robot.subsystems.DrivingSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwallowerSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -28,8 +30,10 @@ public class RobotContainer {
   public final XboxController m_driverInput = new XboxController(Constants.DRIVER_XBOX_USB_PORT);
   private final DriveCommand m_driveCommand = new DriveCommand(m_robotDrive, this);
   public final SwallowerSubsystem m_swallower = new SwallowerSubsystem();
+  public final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
   private JoystickButton button_b;
+  private JoystickButton button_y;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -50,9 +54,14 @@ public class RobotContainer {
   private void configureButtonBindings() {
     button_b = new JoystickButton(m_driverInput, XboxController.Button.kB.value);
 
-    button_b.whileActiveContinuous(new SwallowCommand(m_swallower, 0.5));
+    button_b.whileActiveContinuous(new SwallowCommand(m_swallower, -0.5));
     button_b.whenReleased(new SwallowCommand(m_swallower, 0));
     System.out.println("Button should be configured now");
+
+    button_y = new JoystickButton(m_driverInput, XboxController.Button.kY.value);
+
+    button_y.whileActiveContinuous(new ShootCommand(m_shooter, 0.5));
+    button_y.whenReleased(new ShootCommand(m_shooter, 0));
     //button_a.whenInactive(new SwallowCommand(m_swallower, 0));
 
   }

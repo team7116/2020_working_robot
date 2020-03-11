@@ -21,7 +21,8 @@ public final class Constants {
     public final static int kRearLeft = 12;
     public final static int kRearRight = 16;
 
-    public final static int kSwallowerMotor = 8;
+    public final static int kSwallowerMotor = 5;
+    public final static int kShooterMotor = 3;
 
     public static final int DRIVER_XBOX_USB_PORT = 0; 
     public static final int XBOX_X_AXIS = 4;

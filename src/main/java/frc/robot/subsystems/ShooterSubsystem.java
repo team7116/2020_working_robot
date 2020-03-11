@@ -7,16 +7,24 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
+  
+  VictorSPX motor = new VictorSPX(Constants.kShooterMotor);
   /**
    * Creates a new ShooterSubsystem.
    */
   public ShooterSubsystem() {
 
   }
-
+  public void setSpeed(double speed){
+    motor.set(ControlMode.PercentOutput, speed);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
